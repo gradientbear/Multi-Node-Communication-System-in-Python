@@ -1,34 +1,43 @@
 # Multi-Node Messaging System Using Sockets and Threading
 
-This project implements a **multi-node communication system** where a server manages multiple nodes (clients) to send and forward messages dynamically. The server and clients are built using Python with robust logging and error handling for scalability and ease of debugging.
+---
+
+## Project Overview
+
+This project implements a **multi-node messaging system** enabling dynamic communication between multiple clients (nodes) via a centralized server. Built with Python, the system leverages sockets and threading for concurrent client management, robust logging, and comprehensive error handling to ensure scalability and reliability.
 
 ---
 
 ## Features
-- **Dynamic Node Registration**: Nodes (clients) register with the server on connection.
-- **Message Forwarding**: Clients can send messages to other nodes via the server.
-- **Scalability**: Supports multiple nodes and dynamic message routing.
-- **Logging**: Logs all server and client activities in separate log files (`server.log`, `client.log`).
-- **Error Handling**: Handles disconnections and invalid messages gracefully.
+
+- **Dynamic Node Registration:** Clients register with the server upon connection using unique node IDs.  
+- **Message Forwarding:** Enables clients to send messages to any connected node through the server.  
+- **Scalable Architecture:** Supports multiple simultaneous nodes with dynamic message routing.  
+- **Comprehensive Logging:** Server and client activities are logged separately (`server.log` and `client.log`).  
+- **Robust Error Handling:** Gracefully manages disconnections, invalid messages, and other edge cases.
 
 ---
 
-## How It Works
-1. **Server**:
-   - Accepts client connections and registers nodes dynamically.
-   - Routes messages between nodes based on the target node ID.
-   - Logs all activities and handles disconnections.
+## System Architecture
 
-2. **Client**:
-   - Connects to the server and registers with a unique node ID.
-   - Sends messages to target nodes via the server.
-   - Listens for incoming messages.
+### Server
+- Listens for incoming client connections.  
+- Registers nodes dynamically with their unique IDs.  
+- Routes messages from source clients to designated target nodes.  
+- Logs all activities and manages client disconnections.
+
+### Client
+- Connects to the server and registers with a chosen node ID.  
+- Sends messages to other nodes via the server.  
+- Listens for and displays incoming messages from other clients.
 
 ---
 
-## File Structure
-- `server.py`: Server code to manage and route messages between clients.
-- `client.py`: Client code to send and receive messages.
+## Repository Structure
+
+- `server.py` — Server implementation handling client management and message routing.  
+- `client.py` — Client implementation for sending and receiving messages.
+
 ---
 
 ## Setup & Usage
@@ -99,5 +108,5 @@ Enter `q` to disconnect the client.
 
 ---
 ## Notes
-- The server automatically disconnects inactive nodes and logs the event.
-- Extendable to support additional message processing or node configurations.
+- The server monitors and disconnects inactive clients automatically, logging all relevant events.
+- The system can be extended with additional features such as encrypted messaging, authentication, or advanced routing logic.
